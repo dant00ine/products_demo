@@ -1,0 +1,24 @@
+<h1>New Product</h1>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p style="color:red;"><%= error %></p>
+  <% end %>
+<% end %>
+
+
+<form action="/products" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Product Name:
+    <input type="text" name="name">
+  </label>
+  <label>Description:
+    <textarea type="text" name="description" cols="20" rows="5"> </textarea>
+  </label>
+  <label>Price:
+    <input type="number" name="price">
+  </label>
+  <input type="submit" value="Register Project">
+</form>
+
+<a href="/products">back</a>

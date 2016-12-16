@@ -1,0 +1,27 @@
+<h1>Products#edit</h1>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p class="alert alert-danger"><%= error %></p>
+  <% end %>
+<% end %>
+
+<form action="/products/<%= @product.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="put">
+  <label>Name:
+    <input type="text" name="name" value="<%= @product.name %>">
+  </label>
+  <label>Description:
+    <textarea name="description" cols="20" rows="5">
+      <%= @product.description %>
+    </textarea>
+  </label>
+  <label>Price:
+    <input type="number" name="price" value="<%= @product.price %>">
+  </label>
+  <input type="submit" value="Update">
+</form>
+
+<a href="/products/<%= @product.id %>">Show</a> |
+<a href="/products">Back</a>
